@@ -2,7 +2,7 @@ mod masks;
 
 extern crate image;
 
-use crate::masks::grayscale;
+
 
 fn main() -> anyhow::Result<()> {
     let image = image::open("input.png")?;

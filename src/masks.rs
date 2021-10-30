@@ -11,17 +11,17 @@ pub fn grayscale() -> impl Fn(RgbaImage) -> RgbaImage {
     }
 }
 
-pub fn circleMask(radius: i32, center_x: i32, center_y: i32) -> impl Fn(RgbaImage) -> RgbaImage {
-    move |mut input| {
-        for (x, y, pixel) in input.enumerate_pixels_mut() {
-            let xx = x as i32 - center_x;
-            let yy = y as i32 - center_y;
-
-            let (r, g, b, a) = pixel.channels4();
-            let alpha = if xx*xx + yy*yy < radius*radius {a} else {0};
-            *pixel = image::Rgba([r, g, b, alpha])
-        }
-
-        input
-    }
-}
+// pub fn circle_mask(radius: i32, center_x: i32, center_y: i32) -> impl Fn(RgbaImage) -> RgbaImage {
+//     move |mut input| {
+//         for (x, y, pixel) in input.enumerate_pixels_mut() {
+//             let xx = x as i32 - center_x;
+//             let yy = y as i32 - center_y;
+//
+//             let (r, g, b, a) = pixel.channels4();
+//             let alpha = if xx*xx + yy*yy < radius*radius {a} else {0};
+//             *pixel = image::Rgba([r, g, b, alpha])
+//         }
+//
+//         input
+//     }
+// }
